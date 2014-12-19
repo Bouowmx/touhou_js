@@ -47,7 +47,7 @@ var frame = function() {
 };
 
 $("#bgm")[0].src = "bgm/th06_15.ogg";
-$("#bgm_text").html("BGM: U.N.オーエンは彼女なのか？ (U.N. Owen Was Her?)");
+$("#bgm_text").html("BGM: ほおずきみたいに紅い魂 (A Soul as Red as a Ground Cherry)");
 $(document).on("keydown", function(e) {
 	if (!(e.shiftKey)) {
 		if (e.which == 37) {if (player.x > 0) {player.x -= 4;}} //Left
