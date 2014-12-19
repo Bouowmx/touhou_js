@@ -46,9 +46,10 @@ var frame = function() {
 	time_g = time;*/
 };
 
-$("#bgm")[0].src = "bgm/th06_15.ogg";
+$("#bgm")[0].src = "bgm/th06_02.ogg";
 $("#bgm_text").html("BGM: ほおずきみたいに紅い魂 (A Soul as Red as a Ground Cherry)");
 $(document).on("keydown", function(e) {
+	//Concurrent key-press issues.
 	if (!(e.shiftKey)) {
 		if (e.which == 37) {if (player.x > 0) {player.x -= 4;}} //Left
 		if (e.which == 38) {if (player.y > 0) {player.y -= 4;}} //Up
