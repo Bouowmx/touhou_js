@@ -24,11 +24,6 @@ function Bullet(image, x, y, velocity_x, velocity_y, acceleration_x, acceleratio
 }
 
 var frame = function() {
-	/*var player = $("#player")[0];
-	player.src = "player/reimu_" + player_image++ + ".png";
-	if (player_image > 3) {player_image = 0;}
-	player.style.left = "100px";
-	player.style.top = "100px";*/
 	context_2d.clearRect(0, 0, canvas.width, canvas.height);
 	shoot--;
 	for (i = 0; i < bullets.length; i++) {
@@ -50,16 +45,28 @@ var frame = function() {
 	console.log(time - time_g);
 	time_g = time;*/
 };
-var frame_interval = setInterval(frame, 1000 / 60);
-var stop_frame_interval = function() {clearInterval(frame_interval);};
 
 $("#bgm")[0].src = "bgm/th06_15.ogg";
 $("#bgm_text").html("BGM: U.N.オーエンは彼女なのか？ (U.N. Owen Was Her?)");
 $(document).on("keydown", function(e) {
+	if (!(e.shiftKey)) {
+		if (e.which == 37) {if (player.x > 0) {player.x -= 4;}} //Left
+		if (e.which == 38) {if (player.y > 0) {player.y -= 4;}} //Up
+		if (e.which == 39) {if (player.x < 640) {player.x += 4;}} //Right
+		if (e.which == 40) {if (player.y < 480) {player.y += 4;}} //Down
+	} else {
+		if (e.which == 37) {if (player.x > 0) {player.x -= 2;}} //Left
+		if (e.which == 38) {if (player.y > 0) {player.y -= 2;}} //Up
+		if (e.which == 39) {if (player.x < 640) {player.x += 2;}} //Right
+		if (e.which == 40) {if (player.y < 480) {player.y += 2;}} //Down
+	}
 	if (e.which == 90) {
 		if (shoot <= 1) {
-			bullets[bullets.length] = new Bullet("player/reimu_shot.png", 300, 400, 0, -5, 0, 0);
+			bullets[bullets.length] = new Bullet("player/reimu_shot.png", player.x, player.y, 0, -5, 0, 0);
 			shoot = 4;
 		}
 	}
 });
+
+var frame_interval = setInterval(frame, 1000 / 60);
+var stop_frame_interval = function() {clearInterval(frame_interval);};
