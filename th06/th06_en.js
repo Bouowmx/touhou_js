@@ -32,7 +32,7 @@ var frame = function() {
 	for (i = 0; i < bullets.length; i++) {
 		var bullet = bullets[i];
 		if ((bullet.x >= 0) && (bullet.x <= 640) && (bullet.y >= 0) && (bullet.y <= 480)) {
-			context_2d.drawImage(bullet.image, bullet.x, bullet.y);
+			context_2d.drawImage(bullet.image, bullet.x - bullet.image.width / 2, bullet.y - bullet.image.height / 2);
 			bullet.x += bullet.velocity_x;
 			bullet.y += bullet.velocity_y;
 			bullet.velocity_x += bullet.acceleration_x;
@@ -42,7 +42,7 @@ var frame = function() {
 			i--;
 		}
 	}
-	context_2d.drawImage(player.images[player_image], player.x, player.y);
+	context_2d.drawImage(player.images[player_image], player.x - player.images[player_image].width / 2, player.y - player.images[player_image].height / 2);
 	if (draw_player <= 1) {
 		player_image++;
 		draw_player = 6;
